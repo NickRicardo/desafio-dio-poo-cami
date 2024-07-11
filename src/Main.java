@@ -1,6 +1,4 @@
-import br.com.dio.desafio.dominio.Conteudo;
-import br.com.dio.desafio.dominio.Curso;
-import br.com.dio.desafio.dominio.Mentoria;
+import br.com.dio.desafio.dominio.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -23,9 +21,39 @@ public class Main {
         mentoria.setDescricao("Descrição Mentoria Java");
         mentoria.setData(LocalDate.now());
 
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Developer");
+        bootcamp.setDescricao("Descrição Bootcamp Java Developer");
+        bootcamp.getConteudos().add(curso);
+        bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(mentoria);
 
-        System.out.println(curso);
-        System.out.println(curso2);
-        System.out.println(mentoria);
+        Dev devNicolas = new Dev();
+        devNicolas.setNome("Nicolas Santos");
+        devNicolas.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos Inscritos Nicolas" + devNicolas.getConteudosInscritos());
+        devNicolas.progredir();
+        System.out.println("Conteúdos Inscritos Nicolas" + devNicolas.getConteudosInscritos());
+        System.out.println("Conteúdos Concluidos Nicolas" + devNicolas.getConteudosConcluidos());
+        System.out.println("XP: " + devNicolas.calcularTotalXp() );
+
+        System.out.println(" ");
+        System.out.println("=========================================================================");
+        System.out.println(" ");
+
+        Dev devRicardo = new Dev();
+        devRicardo.setNome("Ricardo Ferreira");
+        devRicardo.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos Inscritos Ricardo" + devRicardo.getConteudosInscritos());
+
+        devRicardo.progredir();
+        System.out.println("Progredindo");
+
+        devRicardo.progredir();
+        System.out.println("Progredindo");
+
+        System.out.println("Conteúdos Inscritos Ricardo" + devRicardo.getConteudosInscritos());
+        System.out.println("Conteúdos Concluidos Ricardo" + devRicardo.getConteudosConcluidos());
+        System.out.println("XP: " + devRicardo.calcularTotalXp() );
     }
 }
